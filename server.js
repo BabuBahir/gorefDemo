@@ -22,23 +22,18 @@ app.listen(port, function() {
 });
 
 
-
-
 	
 	var data = [
 	  {
 		name: "John",
-		age: 21,
 		location: "New York"
 	  },
 	  {
-		name: "Smith",
-		age: 27,
+		name: "Smith",	
 		location: "Texas"
 	  },
 	  {
-		name: "Lisa",
-		age: 23,
+		name: "Lisa",		
 		location: "Chicago"
 	  }
 	];
