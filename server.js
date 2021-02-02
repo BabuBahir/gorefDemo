@@ -48,7 +48,7 @@ router.route("/insertdata").post(function(req, res) {
 	  if (err) {
 		res.send(err);
 	  } else {
-		  res.sendFile(path.join(__dirname + '/list.html'));
+		  res.redirect("/list"); 		   
 		//res.send(result);
 	  }
 	});
@@ -68,18 +68,70 @@ router.route("/fetchdata").get(function(req, res) {
 
 router.route("/find").get(function(req, res) {
 	
-	var name="pap"; 
-	employees.find({name: {$regex: name, $options: 'i'}}, function (err, docs) { 
-    if (err){ 
-        console.log(err); 
-    } 
-    else{ 
-        console.log("Second function call : ", docs); 
-		res.send(docs);
-    } 
-}); 
+		var name="pap"; 
+		employees.find({name: {$regex: name, $options: 'i'}}, function (err, doc) { 
+		if (err){ 
+			console.log(err); 
+		} 
+		else{ 
+			console.log("Second function call : ", doc); 
+			res.send(docs);
+		} 
+	}); 
  
 });
+
+
+router.route("/edit/:id").get(function(req, res) {
+	
+		var id=req.params.id;  
+		employees.findOne({_id: id}, function (err, doc) { 
+		if (err){ 
+			console.log(err); 
+		} 
+		else{ 			 
+			res.send(doc);
+		} 
+	});  
+});
+
+router.route("/delete/:id").get(function(req, res) {
+	
+		var id=req.params.id;  
+		employees.findOne({_id: id}, function (err, doc) { 
+		if (err){ 
+			console.log(err); 
+		} 
+		else{ 						 
+			doc.remove();    // to delete
+			res.redirect("/list"); 
+		} 
+	});  
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -12,21 +12,24 @@
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
 </head>
 <body>
-
-    <table id="example" class="display" style="width:100%">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Location</th> 
-            </tr>
-        </thead> 
-    </table>
+	<div class="container">	
+		<table id="example" class="display compact" style="width:90%">
+			<thead>
+				<tr>
+					<th>SlNo</th>
+					<th>Name</th>
+					<th>Location</th> 
+					<th>Edit / Delete</th>
+				</tr>
+			</thead> 
+		</table>
 
 
 		<footer>
 		<br/><br/><br/>
 		<div><a href="/">Insert more entries !!!</a></div>
 		</footer>
+	</div<
 </body>
 </html>
 
@@ -40,7 +43,15 @@ $(document).ready(function() {
 		},
         "columns": [
             { "data": "name" },
-            { "data": "location" }
-		]	
+            { "data": "name" },
+            { "data": "location" },
+			{"mRender": function ( data, type, row ) { console.log();
+                        return '<a href="edit/'+row["_id"]+'" class="editor_edit">Edit</a> / <a href="delete/'+row["_id"]+'" class="editor_remove">Delete</a>';}
+            } 
+		],
+		"fnRowCallback" : function(nRow, aData, iDisplayIndex){
+                $("td:first", nRow).html(iDisplayIndex +1);
+               return nRow;
+            }
     } );
 } );</script>
