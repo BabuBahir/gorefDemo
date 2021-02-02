@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Go Ref</title>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <style>
+        body { padding-top:50px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">	
+        <form class="form" method="post" action="/insertdata">
+		  <div class="form-group">
+			<label for="fullName">Full Name:</label>
+			<input type="text" class="form-control" name="fullName" id="fullName" required>
+		  </div>
+		  <div class="form-group">
+			<label for="location">Location:</label>
+			<input type="text" class="form-control" name="location" id="location" required>
+		  </div> 
+		  <button type="submit" class="btn btn-default">Submit</button>
+		</form>
+		
+		
+		<footer>
+		<br/><br/><br/>
+		<div><a href="/list">See existing employees & Search !!</a></div>
+		</footer>
+    </div>
+
+</body>
+</html>
