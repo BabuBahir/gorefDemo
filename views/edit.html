@@ -12,14 +12,14 @@
 <body>
 
     <div class="container">	
-        <form class="form" method="post" action="/insertdata">
+        <form class="form" method="post" action="/updatedata/<%=id%>">
 		  <div class="form-group">
 			<label for="fullName">Full Name:</label>
-			<input type="text" class="form-control" name="fullName" id="fullName" required>
+			<input type="text" class="form-control" name="fullName" id="fullName" value='<%=name%>' required>
 		  </div>
 		  <div class="form-group">
 			<label for="location">Location:</label>
-			<input type="text" class="form-control" name="location" id="location" required>
+			<input type="text" class="form-control" name="location" id="location" value='<%=location%>' required>
 		  </div> 
 		  <button type="submit" class="btn btn-default">Submit</button>
 		</form>
@@ -27,7 +27,7 @@
 		
 		<footer>
 		<br/><br/><br/>
-		<div><a href="list">See existing employees & Search !!</a></div>
+		<div><a href="/list">See existing employees & Search !!</a></div>
 		</footer>
     </div>
 
