@@ -31,11 +31,13 @@ app.listen(port, function() {
 
 
 
-
 router.route("/").get(function(req, res) {	  
 	  res.sendFile(path.join(__dirname + '/index.html'));
 });
- 
+
+router.route("/list").get(function(req, res) {	  
+	  res.sendFile(path.join(__dirname + '/list.html'));
+}); 
  
 router.route("/insertdata").post(function(req, res) {
 	var body  =req.body;	 	
@@ -46,7 +48,8 @@ router.route("/insertdata").post(function(req, res) {
 	  if (err) {
 		res.send(err);
 	  } else {
-		res.send(result);
+		  res.sendFile(path.join(__dirname + '/list.html'));
+		//res.send(result);
 	  }
 	});
 });
@@ -61,3 +64,23 @@ router.route("/fetchdata").get(function(req, res) {
     }
   });
 });
+
+
+router.route("/find").get(function(req, res) {
+	
+	var name="pap"; 
+	employees.find({name: {$regex: name, $options: 'i'}}, function (err, docs) { 
+    if (err){ 
+        console.log(err); 
+    } 
+    else{ 
+        console.log("Second function call : ", docs); 
+		res.send(docs);
+    } 
+}); 
+ 
+});
+
+
+
+
