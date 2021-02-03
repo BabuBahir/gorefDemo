@@ -42,9 +42,8 @@
 	app.set('view engine', 'html');
 
 
-	router.route("/").get(function(req, res) {	  
-		  //res.sendFile(path.join(__dirname + '/index.html'));
-		  res.render('index', {name:'raja bhaiye'});   // for ejs
+	router.route("/").get(function(req, res) {	  		   
+		  res.render('index', {name:'Rohitas Behera'});   // for ejs
 	});
 
 	router.route("/list").get(function(req, res) {	  
@@ -55,9 +54,8 @@
 	 
 	router.route("/insertdata").post(function(req, res) {
 		var body  =req.body;	 	
-		
 		var data = [{ name: body["fullName"] ,location: body["location"] }];	 
-		 
+
 		employees.insertMany(data, function(err, result) {
 		  if (err) {
 			res.send(err);
@@ -69,14 +67,13 @@
 
 	router.route("/updatedata/:id").post(function(req, res) {
 		var body  =req.body;	 	
-		var id = req.params.id;  ;//body["id"]
+		var id = req.params.id;  
 		var data = { name: body["fullName"] ,location: body["location"] };	  
 		
 		employees.updateOne({"_id": id}, data, {upsert: false}, function(err, result) {				
 			  if (err) {
 				res.send(err);
-			  } else {
-				  console.log(result);
+			  } else {				   
 				  res.redirect("/list"); 		   					 
 			  }
 		}); 
@@ -100,8 +97,7 @@
 			if (err){ 
 				console.log(err); 
 			} 
-			else{ 			 
-				console.log(doc);
+			else{ 			 				 
 				res.render('edit', {name: doc['name'] , id : doc['id'],location :doc['location'] }); 
 			}		 
 		});			 
